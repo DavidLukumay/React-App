@@ -1,4 +1,5 @@
 import React from 'react';
+import { Component } from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem,
 Button, Modal, ModalHeader, ModalBody, Col, Row, Label } from 'reactstrap';
 import { Control, LocalForm, Errors} from 'react-redux-form'
@@ -10,7 +11,7 @@ const minLength = (len)=>(val)=>(val)&&(val.length>=len)
 
 
 
-class CommentForm extends React.Component {
+class CommentForm extends Component {
     constructor(props)
     {
         super(props);
