@@ -16,6 +16,7 @@ class CommentForm extends Component {
     {
         super(props);
         this.toggleModal = this.toggleModal.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.state={
             isModalOpen:false
         }
@@ -28,14 +29,14 @@ class CommentForm extends Component {
       }
 
     handleSubmit(values){
-        console.log("Current state is: " + JSON.stringify(values));
-        alert("Current state is: " + JSON.stringify(values));
+        this.toggleModal();
+        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
     }
 
 render() { 
     return ( 
         <React.Fragment>
-        <Button className="bg-white text-dark" onClick={this.toggleModal}>
+        <Button outline className="bg-white text-dark" onClick={this.toggleModal}>
             <i className="fa fa-pencil fa-lg"></i>{' '}Submit Comment
         </Button>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
@@ -127,7 +128,7 @@ function RenderDish({dish}){
     );
 }
 
-function RenderComments({comments,dishId}){
+function RenderComments({comments,addComment,dishId}){
         if(comments != null)
         return(
             <div className="col-12 col-md-5 m-1">
@@ -142,9 +143,7 @@ function RenderComments({comments,dishId}){
                     );
                     })}
                 </ul>
-                <div>
-                    <CommentForm />
-                </div>
+                 <CommentForm dishId={dishId} addComment={addComment} />
             </div>
         );
 
@@ -172,7 +171,9 @@ const Dishdetail = (props) => {
             </div>
                 <div className="row">
                     <RenderDish dish={props.dish} />
-                    <RenderComments comments={props.comments} />
+                    <RenderComments comments={props.comments} 
+                        addComment = {props.addComment}
+                        dishId = {props.dish.id}/>
                 </div>
             </div>
         );
