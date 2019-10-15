@@ -77,7 +77,7 @@ render() {
                                     model=".author"
                                     show="touched"
                                     messages={{
-                                        required: 'Required',
+                                        required: 'Required\t',
                                         minLength: 'Must be greater than 2 characters',
                                         maxLength: 'Must be 15 characters or less'
                                     }}
