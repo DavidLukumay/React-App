@@ -28,7 +28,7 @@ function RenderCard({item, isLoading, errMess}){
             <CardImg src={baseUrl + item.image} alt={item.name} />
             <CardBody>
                 <CardText>{item.name}</CardText>
-                {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null} {/* (?)=not null */}
+                {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null} {/* (?)=check condition */}
                 <CardText>{item.description}</CardText>
             </CardBody>
         </Card>
